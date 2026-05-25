@@ -1,0 +1,22 @@
+catalog:
+  db:
+    host: project-bedrock-mysql.cslieiyu621m.us-east-1.rds.amazonaws.com
+    name: catalog
+    user: admin
+    existingSecret: project-bedrock-mysql-secret
+
+orders:
+  db:
+    host: project-bedrock-postgresql.cslieiyu621m.us-east-1.rds.amazonaws.com
+    name: orders
+    user: dbadmin
+    existingSecret: project-bedrock-postgresql-secret
+
+carts:
+  dynamodb:
+    tableName: project-bedrock-cart
+    region: us-east-1
+
+ui:
+  service:
+    type: ClusterIP
