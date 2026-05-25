@@ -15,7 +15,8 @@ output "cluster_name" {
 
 output "cluster_endpoint" {
   description = "EKS cluster endpoint"
-  value       = ""
+  value       = module.eks.cluster_endpoint
+
 }
 
 output "assets_bucket_name" {
