@@ -1,6 +1,6 @@
 # S3 Assets Bucket
 resource "aws_s3_bucket" "assets" {
-  bucket = "bedrock-assets-ifhy1"
+  bucket = "bedrock-assets-alt-soe-025-4190"
 }
 
 resource "aws_s3_bucket_public_access_block" "assets" {

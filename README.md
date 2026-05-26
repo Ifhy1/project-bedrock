@@ -45,7 +45,7 @@ This project provisions a production-grade Kubernetes environment on AWS EKS for
 │  └──────────────────────────────────────────────────────────────┘  │
 └───────────────────────────────────────────────────────────────────┘
 
-S3 (bedrock-assets-ifhy1) ──► Lambda (bedrock-asset-processor) ──► CloudWatch
+S3 (bedrock-assets-alt-soe-025-4190) ──► Lambda (bedrock-asset-processor) ──► CloudWatch
 
 GitHub Actions: PR → terraform plan │ Merge → terraform apply
 ```
