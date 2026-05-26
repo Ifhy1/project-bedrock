@@ -50,6 +50,14 @@ S3 (bedrock-assets-alt-soe-025-4190) ──► Lambda (bedrock-asset-processor) 
 GitHub Actions: PR → terraform plan │ Merge → terraform apply
 ```
 
+The infrastructure lives inside a custom VPC (`project-bedrock-vpc`) in `us-east-1`, spread across two Availability Zones for high availability. Public subnets host the **Internet Gateway** which handles inbound traffic from the internet, and the **NAT Gateway** which allows resources in private subnets to reach the internet without being publicly exposed.
+
+Incoming traffic first hits the **Application Load Balancer (ALB)** which routes requests into the private subnets where the application lives. The heart of the architecture is the **EKS cluster** (`project-bedrock-cluster` v1.34) where the retail store microservices — ui, catalog, orders, checkout, and cart — run as pods inside the `retail-app` namespace. **RabbitMQ** handles messaging between services and **Redis** manages session caching, both running as in-cluster pods.
+
+All databases are managed AWS services — **RDS MySQL** for the catalog service, **RDS PostgreSQL** for the orders service, and **DynamoDB** for the cart service. Database credentials are securely stored in **AWS Secrets Manager** and injected into the application at runtime, never hardcoded.
+
+A dedicated IAM user (`bedrock-dev-view`) provides the development team with read-only access to both the AWS Console and the Kubernetes cluster via RBAC. Container logs and EKS control plane logs are shipped to **CloudWatch** via FluentBit running as a DaemonSet on every node. Product image uploads to the **S3 bucket** (`bedrock-assets-alt-soe-025-4190`) automatically trigger the **Lambda function** `bedrock-asset-processor` which logs each filename to CloudWatch. All infrastructure changes are automated through a **GitHub Actions** CI/CD pipeline that plans on Pull Requests and applies on merge to main.
+
 ## Live Application URL
 http://k8s-retailap-retailst-17d19cf248-479854556.us-east-1.elb.amazonaws.com
 
