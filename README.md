@@ -77,4 +77,13 @@ kubectl apply -f k8s/ingress.yaml
 cd terraform
 terraform output -json > ../grading.json
 ```
+## Helm Deployment
 
+To deploy the retail store application using Helm:
+
+```bash
+helm upgrade --install retail-store ./helm/retail-store \
+  -n retail-app \
+  --create-namespace \
+  -f helm/retail-store/values.yaml
+```

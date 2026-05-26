@@ -1,0 +1,27 @@
+catalog:
+  db:
+    host: project-bedrock-mysql.cslieiyu621m.us-east-1.rds.amazonaws.com
+    name: catalog
+    user: admin
+
+orders:
+  db:
+    host: project-bedrock-postgresql.cslieiyu621m.us-east-1.rds.amazonaws.com
+    name: orders
+    user: dbadmin
+
+carts:
+  dynamodb:
+    tableName: project-bedrock-cart
+    region: us-east-1
+
+ui:
+  service:
+    type: ClusterIP
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
