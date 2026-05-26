@@ -1,0 +1,52 @@
+{
+  "assets_bucket_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "bedrock-assets-alt-soe-025-4190"
+  },
+  "cluster_endpoint": {
+    "sensitive": false,
+    "type": "string",
+    "value": "https://606D6C8238C738DE15879167063C05D5.gr7.us-east-1.eks.amazonaws.com"
+  },
+  "cluster_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "project-bedrock-cluster"
+  },
+  "dev_user_access_key": {
+    "sensitive": false,
+    "type": "string",
+    "value": "AKIA2JSBZUOIXZSPNUMX"
+  },
+  "dev_user_password": {
+    "sensitive": true,
+    "type": "string",
+    "value": "SEE-GOOGLE-DOC"
+  },
+  "dev_user_secret_key": {
+    "sensitive": true,
+    "type": "string",
+    "value": "SEE-GOOGLE-DOC"
+  },
+  "mysql_endpoint": {
+    "sensitive": false,
+    "type": "string",
+    "value": "project-bedrock-mysql.cslieiyu621m.us-east-1.rds.amazonaws.com"
+  },
+  "postgresql_endpoint": {
+    "sensitive": false,
+    "type": "string",
+    "value": "project-bedrock-postgresql.cslieiyu621m.us-east-1.rds.amazonaws.com"
+  },
+  "region": {
+    "sensitive": false,
+    "type": "string",
+    "value": "us-east-1"
+  },
+  "vpc_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "vpc-019a08e674e3ce0c5"
+  }
+}
