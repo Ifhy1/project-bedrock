@@ -13,45 +13,42 @@ This project provisions a production-grade Kubernetes environment on AWS EKS for
 
 ## Architecture Diagram
 
-![Project Bedrock Architecture]
-Oh you mean like a text/ASCII diagram! Here you go, add this to your README:
 
 ```
-```
-Internet / Users
-      │
-      ▼
-Application Load Balancer (ALB)
-      │
-      ▼
-┌─────────────────────────────────────────────┐
-│ project-bedrock-vpc (us-east-1)             │
-│  ┌─────────────────────────────────────┐    │
-│  │ Public Subnets (AZ-a, AZ-b)         │    │
-│  │  NAT Gateway    Internet Gateway    │    │
-│  └─────────────────────────────────────┘    │
-│  ┌─────────────────────────────────────┐    │
-│  │ Private Subnets (AZ-a, AZ-b)        │    │
-│  │  ┌──────────────────────────────┐   │    │
-│  │  │ EKS: project-bedrock-cluster │   │    │
-│  │  │  namespace: retail-app       │   │    │
-│  │  │  ui | catalog | orders pods  │   │    │
-│  │  │  RabbitMQ | Redis            │   │    │
-│  │  └──────────────────────────────┘   │    │
-│  │  RDS MySQL | RDS PostgreSQL         │    │
-│  │  DynamoDB | Secrets Manager         │    │
-│  │  CloudWatch Logs (FluentBit)        │    │
-│  └─────────────────────────────────────┘    │
-└─────────────────────────────────────────────┘
+                        ┌─────────────────┐
+                        │  Internet/Users  │
+                        └────────┬────────┘
+                                 │
+                        ┌────────▼────────┐
+                        │      ALB        │
+                        └────────┬────────┘
+                                 │
+┌────────────────────────────────▼──────────────────────────────────┐
+│  project-bedrock-vpc (us-east-1)                                   │
+│  ┌──────────────────────────────────────────────────────────────┐  │
+│  │  Public Subnets — NAT Gateway │ Internet Gateway             │  │
+│  └──────────────────────────────────────────────────────────────┘  │
+│  ┌──────────────────────────────────────────────────────────────┐  │
+│  │  Private Subnets                                             │  │
+│  │  ┌─────────────────────────┐   ┌──────────────────────────┐ │  │
+│  │  │ EKS (retail-app ns)     │   │ bedrock-dev-view          │ │  │
+│  │  │ ui │ catalog │ orders   │   │ IAM ReadOnly + RBAC view  │ │  │
+│  │  │ RabbitMQ │ Redis        │   └──────────────────────────┘ │  │
+│  │  └─────────────────────────┘   ┌──────────────────────────┐ │  │
+│  │  ┌──────────────────────────┐  │ Secrets Manager           │ │  │
+│  │  │ RDS MySQL │ RDS Postgres │  └──────────────────────────┘ │  │
+│  │  │ DynamoDB                 │                               │  │
+│  │  └──────────────────────────┘                               │  │
+│  │  ┌──────────────────────────┐                               │  │
+│  │  │ CloudWatch Logs          │                               │  │
+│  │  └──────────────────────────┘                               │  │
+│  └──────────────────────────────────────────────────────────────┘  │
+└───────────────────────────────────────────────────────────────────┘
 
-Serverless:
-S3 (bedrock-assets-ifhy1) → Lambda (bedrock-asset-processor) → CloudWatch
+S3 (bedrock-assets-ifhy1) ──► Lambda (bedrock-asset-processor) ──► CloudWatch
 
-CI/CD:
-PR → terraform plan | Merge → terraform apply
+GitHub Actions: PR → terraform plan │ Merge → terraform apply
 ```
-```
-
 
 ## Live Application URL
 http://k8s-retailap-retailst-17d19cf248-479854556.us-east-1.elb.amazonaws.com
