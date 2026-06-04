@@ -7,9 +7,13 @@ metadata:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/ssl-redirect: '443'
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:707733857169:certificate/66985abe-ee76-4a63-a79a-a89b11a55ed1
 spec:
   rules:
-    - http:
+    - host: www.projectbedrock.name.ng
+      http:
         paths:
           - path: /
             pathType: Prefix
