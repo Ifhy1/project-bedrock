@@ -61,6 +61,8 @@ A dedicated IAM user (`bedrock-dev-view`) provides the development team with rea
 ## Live Application URL
 http://k8s-retailap-retailst-17d19cf248-479854556.us-east-1.elb.amazonaws.com
 
+https://www.projectbedrock.name.ng
+
 ## How to Trigger the Pipeline
 
 ### Terraform Plan (Pull Request)
