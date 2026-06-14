@@ -8,7 +8,7 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:707733857169:certificate/66985abe-ee76-4a63-a79a-a89b11a55ed1
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:707733857169:certificate/d7abe44a-89e8-4ff7-9c82-77ca7084941a
 spec:
   rules:
     - host: www.projectbedrock.name.ng
