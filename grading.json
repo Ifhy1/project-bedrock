@@ -17,7 +17,7 @@
   "dev_user_access_key": {
     "sensitive": false,
     "type": "string",
-    "value": "AKIA2JSBZUOIXZSPNUMX"
+    "value": "SEE-GOOGLE-DOC"
   },
   "dev_user_password": {
     "sensitive": true,
