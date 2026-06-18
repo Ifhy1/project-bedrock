@@ -15,7 +15,7 @@
     "value": "project-bedrock-cluster"
   },
   "dev_user_access_key": {
-    "sensitive": false,
+    "sensitive": true,
     "type": "string",
     "value": "SEE-GOOGLE-DOC"
   },
